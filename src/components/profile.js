@@ -3,19 +3,21 @@ import React from 'react';
 class Profile extends React.Component{
 
   state = {
-    name: this.props.activeUser[0].name,
-    email: this.props.activeUser[0].email,
-    username: this.props.activeUser[0].username,
+    id: this.props.activeUser.id,
+    name: this.props.activeUser.name,
+    email: this.props.activeUser.email,
+    username: this.props.activeUser.username,
     edit: false
-  }
-
-  submitHandler = (e) => {
-    e.preventDefault()
-    console.log(this.state)
   }
 
   editHandler = () => {
     this.setState({edit: !this.state.edit})
+  }
+
+  submitHandler = (e) => {
+    e.preventDefault()
+    this.setState({edit: !this.state.edit})
+    this.props.editUserHandler(this.state)
   }
 
   changeHandler = (e) => {
@@ -28,9 +30,9 @@ class Profile extends React.Component{
       <h1>Profile</h1>
       { !this.state.edit
         ? (<div>
-            <h3>Name: {this.props.activeUser[0].name}</h3>
-            <h3>Email: {this.props.activeUser[0].email}</h3>
-            <h3>Username: {this.props.activeUser[0].username}</h3>
+            <h3>Name: {this.props.activeUser.name}</h3>
+            <h3>Email: {this.props.activeUser.email}</h3>
+            <h3>Username: {this.props.activeUser.username}</h3>
             <button onClick={this.editHandler}>Edit</button>
           </div>)
         : (<div>

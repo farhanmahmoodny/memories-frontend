@@ -39,7 +39,7 @@ class App extends React.Component {
   }
 
   userHandler = (user) => {
-    let userLI = this.state.users.filter(u => u.username === user.username)
+    let userLI = this.state.users.filter(u => u.username === user.username)[0]
     userLI.length === 0 ?
     (alert("Incorrect Username and/or Password")) :
     (this.setState({activeUser: userLI}, () => {
@@ -66,13 +66,27 @@ class App extends React.Component {
       })
     }).then(resp => resp.json())
       .then(user => {
-        // this.setState({users: [...this.state.users, user]})
         this.setState((prevState) => ({users: [...prevState.users, user]}))
       })
   }
 
   editUserHandler = (user) => {
-    console.log(user)
+    let editUser = this.state.users.filter(u => u.id === user.id)[0]
+    fetch(`http://localhost:3000/users/${editUser.id}`,{
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+        accepts: "application/json"
+      },
+      body: JSON.stringify({
+        name: user.name,
+        email: user.email,
+        username: user.username,
+      })
+    }).then(resp => resp.json())
+      .then(user => {
+        this.setState((prevState) => ({activeUser: user}))
+      })
   }
 
   render() {
