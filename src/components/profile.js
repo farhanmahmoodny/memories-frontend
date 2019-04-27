@@ -25,12 +25,13 @@ class Profile extends React.Component{
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
       <h1>Profile</h1>
       { !this.state.edit
         ? (<div>
-            <h3>Name: {this.props.activeUser.name}</h3>
+            <h3>Name: {this.state.name}</h3>
             <h3>Email: {this.props.activeUser.email}</h3>
             <h3>Username: {this.props.activeUser.username}</h3>
             <button onClick={this.editHandler}>Edit</button>
