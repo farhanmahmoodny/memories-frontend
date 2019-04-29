@@ -3,7 +3,7 @@ import React from 'react';
 class Comment extends React.Component {
   render() {
     return(
-      <h3>{this.props.comment.comment}</h3>
+      <p>{this.props.comment.comment}</p>
     )
   }
 }

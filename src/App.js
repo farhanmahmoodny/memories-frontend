@@ -35,7 +35,6 @@ class App extends React.Component {
   }
 
   memoryHandler = (memory) => {
-    console.log(memory)
     let images = this.state.photos.filter(photo => photo.memory_id === memory.id)
     this.setState({memory: images, activeMemory: memory})
   }
@@ -183,9 +182,6 @@ class App extends React.Component {
   }
 
   addCommentHandler = (comment, userId, photoId) => {
-    console.log('comment', comment)
-    console.log('userId', userId)
-    console.log('photoId', photoId)
     fetch('http://localhost:3000/comments', {
       method: 'POST',
       headers: {
