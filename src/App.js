@@ -189,7 +189,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.comments)
+    // console.log(this.state.comments)
     return (
       <div>
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>

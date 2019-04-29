@@ -11,7 +11,8 @@ class PhotoCard extends React.Component {
     description: this.props.memory.description,
     comment: '',
     edit: true,
-    toggleComment: false
+    toggleComment: false,
+    addComment: false
   }
 
   clickHandler = () => {
@@ -41,9 +42,23 @@ class PhotoCard extends React.Component {
     this.setState({toggleComment: !this.state.toggleComment})
   }
 
+  toggleCommentForm = () => {
+    this.props.activeUser ? (this.setState({addComment: !this.state.addComment})) : (this.props.history.push('/login'))
+  }
+
+  commentText = (e) => {
+    this.setState({comment: e.target.value})
+  }
+
+  commentSubmitHandler = (e) => {
+    e.preventDefault()
+    this.props.addCommentHandler(this.state.comment, this.props.activeUser[0].id, this.props.memory.id)
+    this.setState({comment: '', addComment: !this.state.addComment})
+  }
+
   render() {
     let comments = this.props.comments.filter(comment => comment.photo_id === this.props.memory.id)
-    let postComments = comments.map(com => <Comment comment={com.comment}/>)
+    let postComments = comments.map(com => <Comment key={com.id} comment={com}/>)
     return (
       <div>
       {this.state.edit ?
@@ -54,6 +69,12 @@ class PhotoCard extends React.Component {
         {this.state.toggleComment ?
         <div>
           {postComments}
+          {this.state.addComment ?
+          (<form onSubmit={this.commentSubmitHandler}>
+            <input type='text' name='comment' value={this.state.comment} onChange={this.commentText}/>
+            <button>Add Comments</button>
+          </form>) : null}
+          {this.state.addComment ? null : <button onClick={this.toggleCommentForm}>Add Comments</button>}
         </div> : null }
         <button onClick={this.toggleComments}>Comments</button>
         <button onClick={this.clickHandler}>Edit</button>
