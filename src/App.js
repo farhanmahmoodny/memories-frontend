@@ -93,6 +93,7 @@ class App extends React.Component {
 
   editPhotoHandler = (photo) => {
     let editPhoto = this.state.photos.filter(p => p.id === photo.id)[0]
+    let uneditPhotos = this.state.photos.filter(p => p.id !== photo.id)
     fetch(`http://localhost:3000/photos/${editPhoto.id}`, {
       method: 'PATCH',
       headers: {
@@ -104,7 +105,8 @@ class App extends React.Component {
         image: photo.image,
         description: photo.description,
       })
-    })
+    }).then(res => res.json())
+    .then(photo => this.setState({photos: [...uneditPhotos, photo]}))
   }
 
   addPhotoHandler = (photo) => {

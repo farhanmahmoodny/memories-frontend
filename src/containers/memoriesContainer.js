@@ -32,7 +32,6 @@ class MemoriesContainer extends React.Component{
 
 
   render() {
-    // console.log('memories container active',this.props.activeUser)
     let memCards = this.props.memories.map(memory => <MemoryCard activeUser={this.props.activeUser} key={memory.id} memory={memory}  editMemoryHandler={this.props.editMemoryHandler} deleteMemoryHandler={this.props.deleteMemoryHandler} memoryHandler={this.memoryHandler}/>)
     return (
       <div>
