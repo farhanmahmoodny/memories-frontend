@@ -26,7 +26,10 @@ class Memory extends React.Component {
   }
 
   render() {
-    let photoCards = this.props.memory.map(mem => <PhotoCard key={mem.id} memory={mem} editPhotoHandler={this.props.editPhotoHandler} deletePhotoHandler={this.props.deletePhotoHandler} activeUser={this.props.activeUser} addMemoryHandler={this.props.addMemoryHandler} comments={this.props.comments} addCommentHandler={this.props.addCommentHandler}/>)
+    let photoCards = this.props.memory.map(mem => {
+      console.log(mem.id);
+      return <PhotoCard key={mem.id} memory={mem} editPhotoHandler={this.props.editPhotoHandler} deletePhotoHandler={this.props.deletePhotoHandler} activeUser={this.props.activeUser} addMemoryHandler={this.props.addMemoryHandler} comments={this.props.comments} addCommentHandler={this.props.addCommentHandler} deleteCommentHandler={this.props.deleteCommentHandler}/>
+    })
     return (
       <div>
         {photoCards}

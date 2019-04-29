@@ -58,7 +58,7 @@ class PhotoCard extends React.Component {
 
   render() {
     let comments = this.props.comments.filter(comment => comment.photo_id === this.props.memory.id)
-    let postComments = comments.map(com => <Comment key={com.id} comment={com}/>)
+    let postComments = comments.map(com => <Comment key={com.id} comment={com} deleteCommentHandler={this.props.deleteCommentHandler}/>)
     return (
       <div>
       {this.state.edit ?
