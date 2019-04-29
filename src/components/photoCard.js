@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Comment from './comment'
 
 class PhotoCard extends React.Component {
 
@@ -8,7 +9,9 @@ class PhotoCard extends React.Component {
     location: this.props.memory.location,
     image: this.props.memory.image,
     description: this.props.memory.description,
-    edit: true
+    comment: '',
+    edit: true,
+    toggleComment: false
   }
 
   clickHandler = () => {
@@ -29,7 +32,18 @@ class PhotoCard extends React.Component {
     this.props.activeUser ? (this.props.deletePhotoHandler(photo)) : (this.props.history.push('/login'))
   }
 
+  addCommentHandler = (e) => {
+    e.preventDefault()
+    this.props.addCommentHandler(this.state.comment, this.props.activeUser[0].id, this.props.memory.id)
+  }
+
+  toggleComments = () => {
+    this.setState({toggleComment: !this.state.toggleComment})
+  }
+
   render() {
+    let comments = this.props.comments.filter(comment => comment.photo_id === this.props.memory.id)
+    let postComments = comments.map(com => <Comment comment={com.comment}/>)
     return (
       <div>
       {this.state.edit ?
@@ -37,6 +51,11 @@ class PhotoCard extends React.Component {
         <h5>{this.state.location}</h5>
         <img src={this.state.image} alt="not working"/>
         <p>{this.state.description}</p>
+        {this.state.toggleComment ?
+        <div>
+          {postComments}
+        </div> : null }
+        <button onClick={this.toggleComments}>Comments</button>
         <button onClick={this.clickHandler}>Edit</button>
         <button onClick={() => this.deleteHandler(this.state)}>Delete</button>
       </div>)
