@@ -38,7 +38,7 @@ class PhotoCard extends React.Component {
         <img src={this.state.image} alt="not working"/>
         <p>{this.state.description}</p>
         <button onClick={this.clickHandler}>Edit</button>
-        <button onClick={this.deleteHandler}>Delete</button>
+        <button onClick={() => this.deleteHandler(this.state)}>Delete</button>
       </div>)
       :
       (<div>

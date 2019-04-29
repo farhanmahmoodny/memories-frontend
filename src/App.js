@@ -35,8 +35,9 @@ class App extends React.Component {
   }
 
   memoryHandler = (memory) => {
+    console.log(memory)
     let images = this.state.photos.filter(photo => photo.memory_id === memory.id)
-    this.setState({memory: images, activeMemory: memory.id})
+    this.setState({memory: images, activeMemory: memory})
   }
 
   userHandler = (user) => {
@@ -72,7 +73,6 @@ class App extends React.Component {
   }
 
   editUserHandler = (user) => {
-    console.log('active:',this.state.activeUser, 'cbuser:', user)
     let editUser = this.state.users.filter(u => u.id === user.id)[0]
     fetch(`http://localhost:3000/users/${editUser.id}`,{
       method: 'PATCH',
@@ -87,7 +87,7 @@ class App extends React.Component {
       })
     }).then(resp => resp.json())
       .then(user => {
-        this.setState((prevState) => ({activeUser: user}))
+        this.setState({activeUser: [user]})
       })
   }
 
@@ -110,7 +110,6 @@ class App extends React.Component {
   }
 
   addPhotoHandler = (photo) => {
-    console.log('activeUser: ', this.state.activeUser, "activeMemory: ",  this.state.activeMemory)
     fetch('http://localhost:3000/photos',{
       method: 'POST',
       headers: {
@@ -121,11 +120,10 @@ class App extends React.Component {
         location: photo.location,
         image: photo.image,
         description: photo.description,
-        memory_id: this.state.activememory
+        memory_id: this.state.activeMemory.id
       })
     }).then(resp => resp.json())
       .then(photo => {
-        console.log('photoObj', photo)
         this.setState((prevState) => ({photos: [...prevState.photos, photo]}))
       })
   }
@@ -186,9 +184,10 @@ class App extends React.Component {
 
   render() {
     // console.log(this.state.users, "active: ", this.state.activeUser)
+    // console.log(this.state.memory)
     return (
       <div>
-      {this.state.activeUser ? console.log(this.state.activeUser[0]) : null}
+      {this.state.activeUser ? console.log(this.state.activeUser) : null}
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>
           <Switch>
             <Route exact path='/' render={() => (<Home />) }/>
