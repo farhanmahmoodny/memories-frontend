@@ -186,6 +186,19 @@ class App extends React.Component {
     console.log('comment', comment)
     console.log('userId', userId)
     console.log('photoId', photoId)
+    fetch('http://localhost:3000/comments', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        accepts: 'application/json'
+      },
+      body: JSON.stringify({
+        comment: comment,
+        user_id: userId,
+        photo_id: photoId
+      })
+    }).then(res => res.json())
+    .then(newComment => this.setState({comments: [...this.state.comments, newComment]}))
   }
 
   render() {
