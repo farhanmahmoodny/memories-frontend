@@ -147,11 +147,12 @@ class App extends React.Component {
       body: JSON.stringify({
         title: memory.title,
         date: memory.date,
-        user_id: this.state.activeUser.id
+        user_id: this.state.activeUser[0].id
       })
     }).then(resp => resp.json())
-      .then(memory => {
-        this.setState((prevState) => ({memories: [...prevState.memories, memory]}))
+      .then(mem => {
+        console.log(mem, this.state.activeUser)
+        this.setState((prevState) => ({memories: [...prevState.memories, mem]}))
       })
   }
 
