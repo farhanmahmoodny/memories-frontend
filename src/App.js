@@ -123,8 +123,8 @@ class App extends React.Component {
         memory_id: this.state.activeMemory.id
       })
     }).then(resp => resp.json())
-      .then(photo => {
-        this.setState((prevState) => ({photos: [...prevState.photos, photo]}))
+      .then(pho => {
+        this.setState({photos: [...this.state.photos, pho]}, () => this.memoryHandler(this.state.activeMemory))
       })
   }
 
@@ -134,7 +134,7 @@ class App extends React.Component {
     fetch(`http://localhost:3000/photos/${removePhoto.id}`, {
       method: 'DELETE'
     })
-    this.setState({photos: removedPhoto})
+    this.setState({photos: removedPhoto}, () => this.memoryHandler(this.state.activeMemory))
   }
 
   addMemoryHandler = (memory) => {
@@ -151,7 +151,6 @@ class App extends React.Component {
       })
     }).then(resp => resp.json())
       .then(mem => {
-        console.log(mem, this.state.activeUser)
         this.setState((prevState) => ({memories: [...prevState.memories, mem]}))
       })
   }
@@ -184,11 +183,8 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.users, "active: ", this.state.activeUser)
-    // console.log(this.state.memory)
     return (
       <div>
-      {this.state.activeUser ? console.log(this.state.activeUser) : null}
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>
           <Switch>
             <Route exact path='/' render={() => (<Home />) }/>
