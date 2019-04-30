@@ -34,6 +34,12 @@ class App extends React.Component {
     })
   }
 
+  localStorageHandler = () => {
+    if (localStorage.getItem('username') !== null) {
+      let currUser = this.state.users.filter(user => user.username === localStorage.getItem('username'))
+      this.setState({activeUser: currUser})
+    }
+  }
 
 //User handlers
   memoryHandler = (memory) => {
@@ -47,6 +53,7 @@ class App extends React.Component {
     (alert("Incorrect Username and/or Password")) :
     (this.setState({activeUser: userLI}, () => {
       this.props.history.push('/profile')
+      localStorage.setItem("username", this.state.activeUser[0].username)
     }))
   }
 
@@ -99,6 +106,7 @@ class App extends React.Component {
 
   logout = () => {
     this.setState({activeUser: null})
+    localStorage.removeItem("username")
   }
 
 
@@ -187,7 +195,6 @@ class App extends React.Component {
   }
 
   deleteMemoryHandler = (memory) => {
-    console.log(memory)
     let removeMemory = this.state.memories.filter(m => m.id === memory.id)[0]
     let removedMemory = this.state.memories.filter(m => m.id !== memory.id)
     fetch(`http://localhost:3000/memories/${removeMemory.id}`, {
@@ -224,6 +231,8 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.activeUser)
+    // console.log(this.state.activeUser ? this.state.activeUser[0].username : null)
     return (
       <div>
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>

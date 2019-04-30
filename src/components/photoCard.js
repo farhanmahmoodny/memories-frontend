@@ -58,7 +58,7 @@ class PhotoCard extends React.Component {
 
   render() {
     let comments = this.props.comments.filter(comment => comment.photo_id === this.props.memory.id)
-    let postComments = comments.map(com => <Comment key={com.id} comment={com} deleteCommentHandler={this.props.deleteCommentHandler}/>)
+    let postComments = comments.map(com => <Comment activeUser={this.props.activeUser} key={com.id} comment={com} deleteCommentHandler={this.props.deleteCommentHandler}/>)
     return (
       <div>
       {this.state.edit ?
@@ -77,8 +77,11 @@ class PhotoCard extends React.Component {
           {this.state.addComment ? null : <button onClick={this.toggleCommentForm}>Add Comments</button>}
         </div> : null }
         <button onClick={this.toggleComments}>Comments</button>
-        <button onClick={this.clickHandler}>Edit</button>
-        <button onClick={() => this.deleteHandler(this.state)}>Delete</button>
+        {this.props.activeUser && this.props.activeUser[0].photos.includes(this.props.memory) ?
+        <div>
+          <button onClick={this.clickHandler}>Edit</button>
+          <button onClick={() => this.deleteHandler(this.state)}>Delete</button>
+        </div> : null}
       </div>)
       :
       (<div>

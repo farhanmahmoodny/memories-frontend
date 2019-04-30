@@ -45,8 +45,11 @@ class MemoryCard extends React.Component {
           </form>
         </div>)
       }
-      <button onClick={this.editHandler}>Edit</button>
-      <button onClick={this.deleteHandler}>delete</button>
+      {this.props.activeUser && this.props.memory.user_id === this.props.activeUser[0].id ?
+        <div>
+          <button onClick={this.editHandler}>Edit</button>
+          <button onClick={this.deleteHandler}>Delete</button>
+        </div> : null}
       </div>
     )
   }
