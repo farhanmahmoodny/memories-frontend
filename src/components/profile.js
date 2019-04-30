@@ -7,6 +7,7 @@ class Profile extends React.Component{
     name: this.props.activeUser.name,
     email: this.props.activeUser.email,
     username: this.props.activeUser.username,
+    password: this.props.activeUser.password,
     edit: false
   }
 
@@ -45,6 +46,7 @@ class Profile extends React.Component{
               <h3>Name: <input type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.changeHandler}/></h3>
               <h3>Email: <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.changeHandler}/></h3>
               <h3>Username: <input type='text' name= 'username' placeholder='Username' value={this.state.username} onChange={this.changeHandler}/></h3>
+              <h3>Password: <input type='text' name= 'password' placeholder='Password' value={this.state.password} onChange={this.changeHandler}/></h3>
               <button>Update</button>
             </form>
           </div>)

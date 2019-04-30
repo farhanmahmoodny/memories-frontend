@@ -34,12 +34,6 @@ class App extends React.Component {
     })
   }
 
-  localStorageHandler = () => {
-    if (localStorage.getItem('username') !== null) {
-      let currUser = this.state.users.filter(user => user.username === localStorage.getItem('username'))
-      this.setState({activeUser: currUser})
-    }
-  }
 
 //User handlers
   memoryHandler = (memory) => {
@@ -48,12 +42,11 @@ class App extends React.Component {
   }
 
   userHandler = (user) => {
-    let userLI = this.state.users.filter(u => u.username === user.username)
+    let userLI = this.state.users.filter(u => u.username === user.username && u.password === user.password)
     userLI.length === 0 ?
     (alert("Incorrect Username and/or Password")) :
     (this.setState({activeUser: userLI}, () => {
       this.props.history.push('/profile')
-      localStorage.setItem("username", this.state.activeUser[0].username)
     }))
   }
 
@@ -68,7 +61,7 @@ class App extends React.Component {
         name: user.name,
         email: user.email,
         username: user.username,
-        password_digest: user.password
+        password: user.password
       })
     }).then(resp => resp.json())
     .then(user => {
@@ -88,6 +81,7 @@ class App extends React.Component {
         name: user.name,
         email: user.email,
         username: user.username,
+        password: user.password
       })
     }).then(resp => resp.json())
       .then(user => {
@@ -106,7 +100,6 @@ class App extends React.Component {
 
   logout = () => {
     this.setState({activeUser: null})
-    localStorage.removeItem("username")
   }
 
 
