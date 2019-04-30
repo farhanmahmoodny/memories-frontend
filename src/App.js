@@ -48,10 +48,6 @@ class App extends React.Component {
     }))
   }
 
-  logout = () => {
-    this.setState({activeUser: null})
-  }
-
   newUserHandler = (user) => {
     fetch('http://localhost:3000/users',{
       method: 'POST',
@@ -66,9 +62,9 @@ class App extends React.Component {
         password_digest: user.password
       })
     }).then(resp => resp.json())
-      .then(user => {
-        this.setState((prevState) => ({users: [...prevState.users, user]}))
-      })
+    .then(user => {
+      this.setState((prevState) => ({users: [...prevState.users, user]}))
+    })
   }
 
   editUserHandler = (user) => {
@@ -88,6 +84,21 @@ class App extends React.Component {
       .then(user => {
         this.setState({activeUser: [user]})
       })
+  }
+
+  deleteUserHandler = (user) => {
+    console.log(user.id)
+    let removeUser = this.state.users.filter(u => u.id !== user.id)
+    console.log(removeUser);
+    fetch(`http://localhost:3000/users/${user.id}`, {
+      method: 'DELETE'
+    })
+    this.setState({users: removeUser, activeUser: null})
+    this.props.history.push('/')
+  }
+
+  logout = () => {
+    this.setState({activeUser: null})
   }
 
   editPhotoHandler = (photo) => {
@@ -217,7 +228,7 @@ class App extends React.Component {
             <Route exact path='/memories/:id' render={() => (<Memory memory={this.state.memory} editPhotoHandler={this.editPhotoHandler} deletePhotoHandler={this.deletePhotoHandler} addPhotoHandler={this.addPhotoHandler} activeUser={this.state.activeUser} addCommentHandler={this.addCommentHandler} comments={this.state.comments} deleteCommentHandler={this.deleteCommentHandler}/> ) }/>
             <Route exact path='/login' render={() => (<LogIn userHandler={this.userHandler} activeUser={this.state.activeUser}/>) }/>
             <Route exact path='/signup' render={() => (<SignUp newUserHandler={this.newUserHandler}/>) }/>
-            <Route exact path='/profile' render={() => (<Profile activeUser={this.state.activeUser[0]} editUserHandler={this.editUserHandler}/>) }/>
+            <Route exact path='/profile' render={() => (<Profile activeUser={this.state.activeUser[0]} editUserHandler={this.editUserHandler} deleteUserHandler={this.deleteUserHandler}/>) }/>
           </Switch>
       </div>
     );

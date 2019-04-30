@@ -20,6 +20,10 @@ class Profile extends React.Component{
     this.setState({edit: !this.state.edit})
   }
 
+  deleteHandler = () => {
+    this.props.deleteUserHandler(this.props.activeUser)
+  }
+
   changeHandler = (e) => {
     this.setState({[e.target.name]: e.target.value})
   }
@@ -34,6 +38,7 @@ class Profile extends React.Component{
             <h3>Email: {this.state.email}</h3>
             <h3>Username: {this.state.username}</h3>
             <button onClick={this.editHandler}>Edit</button>
+            <button onClick={this.deleteHandler}>Delete</button>
           </div>)
         : (<div>
             <form onSubmit={this.submitHandler}>
