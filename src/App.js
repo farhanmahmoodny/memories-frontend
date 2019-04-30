@@ -233,7 +233,7 @@ class App extends React.Component {
             <Route exact path='/memories/:id' render={() => (<Memory memory={this.state.memory} editPhotoHandler={this.editPhotoHandler} deletePhotoHandler={this.deletePhotoHandler} addPhotoHandler={this.addPhotoHandler} activeUser={this.state.activeUser} addCommentHandler={this.addCommentHandler} comments={this.state.comments} deleteCommentHandler={this.deleteCommentHandler}/> ) }/>
             <Route exact path='/login' render={() => (<LogIn userHandler={this.userHandler} activeUser={this.state.activeUser}/>) }/>
             <Route exact path='/signup' render={() => (<SignUp newUserHandler={this.newUserHandler}/>) }/>
-            <Route exact path='/profile' render={() => (<Profile activeUser={this.state.activeUser[0]} editUserHandler={this.editUserHandler} deleteUserHandler={this.deleteUserHandler}/>) }/>
+            <Route exact path='/profile' render={() => (this.state.activeUser ? (<Profile activeUser={this.state.activeUser[0]} editUserHandler={this.editUserHandler} deleteUserHandler={this.deleteUserHandler}/>) : (this.props.history.push('/login'))) }/>
           </Switch>
       </div>
     );
