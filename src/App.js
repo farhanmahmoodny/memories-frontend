@@ -70,6 +70,7 @@ class App extends React.Component {
   }
 
   editUserHandler = (user) => {
+    let editedUser = this.state.users.filter(u => u.id !== user.id)
     let editUser = this.state.users.filter(u => u.id === user.id)[0]
     fetch(`http://localhost:3000/users/${editUser.id}`,{
       method: 'PATCH',
@@ -85,7 +86,7 @@ class App extends React.Component {
       })
     }).then(resp => resp.json())
       .then(user => {
-        this.setState({activeUser: [user]})
+        this.setState({users: [...editedUser, user], activeUser: [user]})
       })
   }
 
