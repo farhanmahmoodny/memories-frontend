@@ -34,6 +34,8 @@ class App extends React.Component {
     })
   }
 
+
+//User handlers
   memoryHandler = (memory) => {
     let images = this.state.photos.filter(photo => photo.memory_id === memory.id)
     this.setState({memory: images, activeMemory: memory})
@@ -87,9 +89,7 @@ class App extends React.Component {
   }
 
   deleteUserHandler = (user) => {
-    console.log(user.id)
     let removeUser = this.state.users.filter(u => u.id !== user.id)
-    console.log(removeUser);
     fetch(`http://localhost:3000/users/${user.id}`, {
       method: 'DELETE'
     })
@@ -101,6 +101,8 @@ class App extends React.Component {
     this.setState({activeUser: null})
   }
 
+
+//Photo handlers
   editPhotoHandler = (photo) => {
     let editPhoto = this.state.photos.filter(p => p.id === photo.id)[0]
     let uneditPhotos = this.state.photos.filter(p => p.id !== photo.id)
@@ -147,6 +149,8 @@ class App extends React.Component {
     this.setState({photos: removedPhoto}, () => this.memoryHandler(this.state.activeMemory))
   }
 
+
+//Memory handlers
   addMemoryHandler = (memory) => {
     fetch('http://localhost:3000/memories',{
       method: 'POST',
@@ -192,6 +196,8 @@ class App extends React.Component {
     this.setState({memories: removedMemory})
   }
 
+
+//Comment handlers
   addCommentHandler = (comment, userId, photoId) => {
     fetch('http://localhost:3000/comments', {
       method: 'POST',
@@ -218,7 +224,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.comments)
     return (
       <div>
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>
