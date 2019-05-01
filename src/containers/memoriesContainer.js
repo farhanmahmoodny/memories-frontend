@@ -42,14 +42,14 @@ class MemoriesContainer extends React.Component{
           {memCards}
         </div>
         {this.state.add ?
-        (<div>
+        (<div className='memories-form'>
           <form onSubmit={this.submitHandler}>
             <h5>Title: <input type='text' name='title' value={this.state.title} onChange={this.changeHandler}/></h5>
             <h5>Date: <input type='text' name='date' value={this.state.date} placeholder='MM-DD-YY' onChange={this.changeHandler}/></h5>
-            <button>Create Memory</button>
+            <button className='memories-form-button'>Create Memory</button>
           </form>
         </div>) : null}
-        <button onClick={this.clickHandler}>Add Memory</button>
+        <button className='memories-button' onClick={this.clickHandler}>Add Memory</button>
       </div>
     )
   }

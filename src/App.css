@@ -182,3 +182,31 @@
   width: 150px;
   height: 25px;
 }
+
+.memories-button {
+  margin: 20px;
+  width: 100px;
+  height: 35px;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #ffddac;
+}
+
+.memories-form {
+  padding: 5px;
+  border-radius: 15px;
+  color: #534746;
+  margin: 20px;
+  width: 200px;
+  height: 130px;
+  text-align: center;
+  background-color: #fff5e8;
+}
+
+.memories-form-button {
+  width: 120px;
+  height: 25px;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #ffddac;
+}
