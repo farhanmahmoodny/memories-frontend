@@ -26,18 +26,20 @@
   font-size: 20px;
 }
 
-.button:hover {
+.nav-button:hover {
   color: white;
 }
 
 .header {
   background-color: #ffddac;
+  color: #534746;
   text-align: center;
   font-family: URW Chancery L, cursive;
   font-size: 50px;
 }
 
 .content {
+  color: #5d4726;
   text-align: center;
   font-family: 'Pacifico', cursive;
   font-size: 50px;
@@ -47,7 +49,7 @@
   background-color: #fff5e8;
   border: 2px solid black;
   margin-left: 37%;
-  height: 300px;
+  height: 250px;
   width: 500px;
   display: flex;
   flex-flow: column;
@@ -73,7 +75,7 @@
   background-color: #fff5e8;
   border: 2px solid black;
   margin-left: 37%;
-  height: 500px;
+  height: 450px;
   width: 500px;
   display: flex;
   flex-flow: column;
@@ -93,4 +95,90 @@
   align-self: center;
   border-radius: 10px;
   background-color: #ffddac;
+}
+
+.profile {
+  background-color: #fff5e8;
+  border: 2px solid black;
+  margin-left: 37%;
+  height: 400px;
+  width: 500px;
+  display: flex;
+  flex-flow: column;
+  border-radius: 20px;
+}
+
+.profile-info {
+  margin: 25px;
+  text-align: left;
+  height: 40px;
+  font-size: 25px;
+}
+
+.profile-form {
+  background-color: #fff5e8;
+  border: 2px solid black;
+  margin-left: 37%;
+  height: 450px;
+  width: 500px;
+  display: flex;
+  flex-flow: column;
+  border-radius: 20px;
+}
+
+.profile-input {
+  margin: 25px;
+  text-align: center;
+  height: 40px;
+  font-size: 25px;
+}
+
+.profile-form-button {
+  margin-top: 25px;
+  width: 100px;
+  height: 35px;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #ffddac;
+}
+
+.profile-buttons-div {
+  padding-left: 28%;
+
+}
+
+.profile-button {
+  margin-top: 25px;
+  width: 100px;
+  height: 35px;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #ffddac;
+}
+
+.memoryCard {
+  border-radius: 15px;
+  color: #534746;
+  margin: 20px;
+  width: 200px;
+  text-align: center;
+  background-color: #fff5e8;
+}
+
+.memoryCard:hover {
+  color: #bababa;
+}
+
+.memoryCard-button {
+  width: 90px;
+  height: 25px;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #ffddac;
+}
+
+.memoryCard-form-input {
+  text-align: center;
+  width: 150px;
+  height: 25px;
 }

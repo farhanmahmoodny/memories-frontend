@@ -32,22 +32,26 @@ class Profile extends React.Component{
   render() {
     return (
       <div>
-      <h1>Profile</h1>
+      <div className='header'>
+        <h1>Profile</h1>
+      </div>
       { !this.state.edit
-        ? (<div>
-            <h3>Name: {this.state.name}</h3>
-            <h3>Email: {this.state.email}</h3>
-            <h3>Username: {this.state.username}</h3>
-            <button onClick={this.editHandler}>Edit</button>
-            <button onClick={this.deleteHandler}>Delete</button>
+        ? (<div className='profile'>
+            <h3 className='profile-info'>Name: {this.state.name}</h3>
+            <h3 className='profile-info'>Email: {this.state.email}</h3>
+            <h3 className='profile-info'>Username: {this.state.username}</h3>
+            <div className='profile-buttons-div'>
+              <button className='profile-button' onClick={this.editHandler}>Edit</button>
+              <button className='profile-button' onClick={this.deleteHandler}>Delete</button>
+            </div>
           </div>)
         : (<div>
-            <form onSubmit={this.submitHandler}>
-              <h3>Name: <input type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.changeHandler}/></h3>
-              <h3>Email: <input type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.changeHandler}/></h3>
-              <h3>Username: <input type='text' name= 'username' placeholder='Username' value={this.state.username} onChange={this.changeHandler}/></h3>
-              <h3>Password: <input type='text' name= 'password' placeholder='Password' value={this.state.password} onChange={this.changeHandler}/></h3>
-              <button>Update</button>
+            <form className='profile-form' onSubmit={this.submitHandler}>
+              <h3 className='profile-info'>Name: <input className='profile-input' type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.changeHandler}/></h3>
+              <h3 className='profile-info'>Email: <input className='profile-input' type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.changeHandler}/></h3>
+              <h3 className='profile-info'>Username: <input className='profile-input' type='text' name= 'username' placeholder='Username' value={this.state.username} onChange={this.changeHandler}/></h3>
+              <h3 className='profile-info'>Password: <input className='profile-input' type='text' name= 'password' placeholder='Password' value={this.state.password} onChange={this.changeHandler}/></h3>
+              <button className='profile-form-button'>Update</button>
             </form>
           </div>)
       }

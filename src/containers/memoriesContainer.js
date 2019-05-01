@@ -35,10 +35,10 @@ class MemoriesContainer extends React.Component{
     let memCards = this.props.memories.map(memory => <MemoryCard activeUser={this.props.activeUser} key={memory.id} memory={memory}  editMemoryHandler={this.props.editMemoryHandler} deleteMemoryHandler={this.props.deleteMemoryHandler} memoryHandler={this.memoryHandler}/>)
     return (
       <div>
-        <div>
+        <div className='header'>
           <h1>Memories</h1>
         </div>
-        <div>
+        <div style={{display: 'flex'}}>
           {memCards}
         </div>
         {this.state.add ?
