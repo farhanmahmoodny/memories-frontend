@@ -25,13 +25,15 @@ class SignUp extends React.Component {
   render() {
     return (
       <div>
-        <h1>Sign Up</h1>
-        <form onSubmit={this.submitHandler}>
-          <input type='text' name='name' value={this.state.name} placeholder='Name' onChange={this.changeHandler}/>
-          <input type='text' name='email' value={this.state.email} placeholder='Email' onChange={this.changeHandler}/>
-          <input type='text' name='username' value={this.state.username} placeholder='Username' onChange={this.changeHandler}/>
-          <input type='password' name='password' value={this.state.password} placeholder='Password' onChange={this.changeHandler}/>
-          <button type='submit' value='submit'>Create User</button>
+        <div className='header'>
+          <h1>Sign Up</h1>
+        </div>
+        <form className='signup-form' onSubmit={this.submitHandler}>
+          <input className='signup-form-input' type='text' name='name' value={this.state.name} placeholder='Name' onChange={this.changeHandler}/>
+          <input className='signup-form-input' type='text' name='email' value={this.state.email} placeholder='Email' onChange={this.changeHandler}/>
+          <input className='signup-form-input' type='text' name='username' value={this.state.username} placeholder='Username' onChange={this.changeHandler}/>
+          <input className='signup-form-input' type='password' name='password' value={this.state.password} placeholder='Password' onChange={this.changeHandler}/>
+          <button className='signup-form-button' type='submit' value='submit'>Create User</button>
         </form>
       </div>
     )

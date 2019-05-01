@@ -24,11 +24,13 @@ class LogIn extends React.Component {
   render() {
     return (
       <div>
-        <h1>Log-In</h1>
-        <form onSubmit={this.submitHandler}>
-          <input type='text' name='username' value={this.state.username} placeholder='Username' onChange={this.changeHandler}/>
-          <input type='password' name='password' value={this.state.password} placeholder='Password' onChange={this.changeHandler}/>
-          <button type='submit' value='submit'>Log-In</button>
+        <div className='header'>
+          <h1>Log-In</h1>
+        </div>
+        <form className='login-form' onSubmit={this.submitHandler}>
+          <input className='login-form-input' type='text' name='username' value={this.state.username} placeholder='Username' onChange={this.changeHandler}/>
+          <input className='login-form-input' type='password' name='password' value={this.state.password} placeholder='Password' onChange={this.changeHandler}/>
+          <button className='login-form-button' type='submit' value='submit'>Log-In</button>
         </form>
       </div>
     )

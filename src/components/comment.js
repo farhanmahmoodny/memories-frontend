@@ -1,9 +1,8 @@
 import React from 'react';
 
 class Comment extends React.Component {
+
   render() {
-    console.log('comment:', this.props.comment)
-    // console.log('user:', this.props.activeUser[0])
     return(
       <div>
       <p>{this.props.comment.comment}</p>

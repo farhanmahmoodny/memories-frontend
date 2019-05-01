@@ -225,8 +225,7 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.activeUser)
-    // console.log(this.state.activeUser ? this.state.activeUser[0].username : null)
+    // console.log(this.state.activeUser)
     return (
       <div>
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>

@@ -4,8 +4,12 @@ export default class Home extends React.Component {
   render() {
     return(
       <div>
-        <h1>Memories</h1>
-        <h3>A Way To Remember All The Fun That Was Had...</h3>
+        <div className='header'>
+          <h1>Memories</h1>
+        </div>
+        <div className="content">
+          <h3>A Way To Remember All The Fun That Was Had...</h3>
+        </div>
       </div>
     )
   }
