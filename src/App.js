@@ -17,6 +17,7 @@ class App extends React.Component {
     photos: [],
     comments: [],
     memory: [],
+    memoryTitle: '',
     activeMemory: null,
     activeUser: null
   }
@@ -38,7 +39,7 @@ class App extends React.Component {
 //User handlers
   memoryHandler = (memory) => {
     let images = this.state.photos.filter(photo => photo.memory_id === memory.id)
-    this.setState({memory: images, activeMemory: memory})
+    this.setState({memory: images, activeMemory: memory, memoryTitle: memory.title})
   }
 
   userHandler = (user) => {
@@ -225,14 +226,13 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(this.state.activeUser)
     return (
       <div>
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>
           <Switch>
             <Route exact path='/' render={() => (<Home />) }/>
             <Route exact path='/memories' render={() => (<MemoriesContainer memories={this.state.memories} photos={this.state.photos} comments={this.state.comments} memoryHandler={this.memoryHandler} addMemoryHandler={this.addMemoryHandler} activeUser={this.state.activeUser} editMemoryHandler={this.editMemoryHandler} deleteMemoryHandler={this.deleteMemoryHandler}/>) }/>
-            <Route exact path='/memories/:id' render={() => (<Memory memory={this.state.memory} editPhotoHandler={this.editPhotoHandler} deletePhotoHandler={this.deletePhotoHandler} addPhotoHandler={this.addPhotoHandler} activeUser={this.state.activeUser} addCommentHandler={this.addCommentHandler} comments={this.state.comments} deleteCommentHandler={this.deleteCommentHandler}/> ) }/>
+            <Route exact path='/memories/:id' render={() => (<Memory memory={this.state.memory} editPhotoHandler={this.editPhotoHandler} deletePhotoHandler={this.deletePhotoHandler} addPhotoHandler={this.addPhotoHandler} activeUser={this.state.activeUser} addCommentHandler={this.addCommentHandler} comments={this.state.comments} deleteCommentHandler={this.deleteCommentHandler} memoryTitle={this.state.memoryTitle}/> ) }/>
             <Route exact path='/login' render={() => (<LogIn userHandler={this.userHandler} activeUser={this.state.activeUser}/>) }/>
             <Route exact path='/signup' render={() => (<SignUp newUserHandler={this.newUserHandler}/>) }/>
             <Route exact path='/profile' render={() => (this.state.activeUser ? (<Profile activeUser={this.state.activeUser[0]} editUserHandler={this.editUserHandler} deleteUserHandler={this.deleteUserHandler}/>) : (this.props.history.push('/login'))) }/>

@@ -31,18 +31,23 @@ class Memory extends React.Component {
     })
     return (
       <div>
+      <div className='header'>
+        <h1>{this.props.memoryTitle}</h1>
+      </div>
+      <div style={{display: 'flex'}}>
         {photoCards}
+      </div>
         {this.state.add ?
           (<div>
-            <form onSubmit={this.submitHandler}>
+            <form className='memory-form' onSubmit={this.submitHandler}>
               <h5>Location: <input type='text' name='location' value={this.state.location} onChange={this.changeHandler}/></h5>
               <h5>Image: <input type='text' name='image' value={this.state.image} onChange={this.changeHandler}/></h5>
               <h5>Description: <input type='textarea' name='description' value={this.state.description} onChange={this.changeHandler}/></h5>
-              <button>Add</button>
+              <button className='memory-form-button'>Add</button>
             </form>
           </div>) : null
         }
-        <button onClick={this.clickHandler}>Add Photo</button>
+        <button className='memory-button' onClick={this.clickHandler}>Add Photo</button>
       </div>
     )
   }

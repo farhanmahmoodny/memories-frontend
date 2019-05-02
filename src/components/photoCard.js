@@ -64,34 +64,36 @@ class PhotoCard extends React.Component {
     return (
       <div>
       {this.state.edit ?
-      (<div>
-        <h5>{this.state.location}</h5>
-        <img src={this.state.image} alt="not working"/>
-        <p>{this.state.description}</p>
+      (<div className='photoCard'>
+        <h5 className='photoCard-title'>{this.state.location}</h5>
+        <img className='photoCard-image' src={this.state.image} alt="not working"/>
+        <p className='photoCard-description'>{this.state.description}</p>
         {this.state.toggleComment ?
         <div>
+          <div>
           {postComments}
+          </div>
           {this.state.addComment ?
           (<form onSubmit={this.commentSubmitHandler}>
             <input type='text' name='comment' value={this.state.comment} onChange={this.commentText}/>
-            <button>Add Comments</button>
+            <button className='photoCard-button'>Add</button>
           </form>) : null}
-          {this.state.addComment ? null : <button onClick={this.toggleCommentForm}>Add Comments</button>}
+          {this.state.addComment ? null : <button className='photoCard-button' onClick={this.toggleCommentForm}>Add Comments</button>}
         </div> : null }
-        <button onClick={this.toggleComments}>Comments</button>
+        <button className='photoCard-button' onClick={this.toggleComments}>Comments</button>
         {this.props.activeUser && photos.includes(this.props.memory.id) ?
         <div>
-          <button onClick={this.clickHandler}>Edit</button>
-          <button onClick={() => this.deleteHandler(this.state)}>Delete</button>
+          <button className='photoCard-button' onClick={this.clickHandler}>Edit</button>
+          <button className='photoCard-button' onClick={() => this.deleteHandler(this.state)}>Delete</button>
         </div> : null}
       </div>)
       :
       (<div>
-        <form onSubmit={this.submitHandler}>
+        <form className='photoCard-form' onSubmit={this.submitHandler}>
           <h5>Location: <input type='text' name='location' value={this.state.location} onChange={this.changeHandler}/></h5>
           <h5>Image: <input type='text' name='image' value={this.state.image} onChange={this.changeHandler}/></h5>
           <h5>Description: <input type='textarea' name='description' value={this.state.description} onChange={this.changeHandler}/></h5>
-          <button>Update</button>
+          <button className='photoCard-button'>Update</button>
         </form>
       </div>)
     }
