@@ -285,13 +285,33 @@ padding-right: 10px;
 
 .comment {
   padding: 10px;
-  background-color: #e8e8e8;
+  background-color: #fffefc;
 }
 
 .comment-delete {
   width: 120px;
   height: 25px;
   margin-left: 5px;
+  align-self: center;
+  border-radius: 10px;
+  background-color: #ffddac;
+}
+
+.search-form {
+  padding-left: 40%;
+}
+
+.search-input {
+  width: 150px;
+  height: 30px;
+  text-align: center;
+  font-size: 17px;
+}
+
+.search-button {
+  margin-left: 5px;
+  width: 100px;
+  height: 25px;
   align-self: center;
   border-radius: 10px;
   background-color: #ffddac;
