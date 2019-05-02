@@ -5,12 +5,11 @@ import MemoryCard from '../components/memoryCard';
 class MemoriesContainer extends React.Component{
 
   state = {
-    memories: this.props.memories,
     title: '',
     date: '',
     add: false,
     edit: false,
-    searchTerm: ''
+    search: ''
   }
 
   memoryHandler = (memory) => {
@@ -33,33 +32,15 @@ class MemoriesContainer extends React.Component{
   }
 
   searchHandler = (e) => {
-    this.setState({searchTerm: e.target.value})
-  }
-
-  searchSubmitHandler = (e) => {
-    e.preventDefault()
-    let filtered = this.props.memories.filter(memory => memory.title.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
-    this.setState({memories: filtered, searchTerm: ''})
-  }
-
-  resetMemories = () => {
-    this.setState({memories: this.props.memories})
+    this.setState({search: e.target.value})
   }
 
   render() {
-    console.log(this.state.memories)
-    let memCards = this.state.memories.map(memory => <MemoryCard activeUser={this.props.activeUser} key={memory.id} memory={memory}  editMemoryHandler={this.props.editMemoryHandler} deleteMemoryHandler={this.props.deleteMemoryHandler} memoryHandler={this.memoryHandler}/>)
+    let memCards = this.props.memories.map(memory => <MemoryCard activeUser={this.props.activeUser} key={memory.id} memory={memory}  editMemoryHandler={this.props.editMemoryHandler} deleteMemoryHandler={this.props.deleteMemoryHandler} memoryHandler={this.memoryHandler}/>)
     return (
       <div>
         <div className='header'>
           <h1>Memories</h1>
-        </div>
-        <div>
-          <form className='search-form' onSubmit={this.searchSubmitHandler}>
-          <input className='search-input' type='text' name='search' placeholder='Search Memories' value={this.state.searchTerm} onChange={this.searchHandler}/>
-          <button className='search-button'>Search</button>
-          <button className='search-button' onClick={this.resetMemories}>All</button>
-          </form>
         </div>
         <div style={{display: 'flex'}}>
           {memCards}
