@@ -15,6 +15,23 @@ class PhotoCard extends React.Component {
     addComment: false
   }
 
+  openWidget = () => {
+    window.cloudinary.createUploadWidget(
+     {
+       cloudName: process.env.REACT_APP_CLOUD_NAME_KEY,
+       uploadPreset: process.env.REACT_APP_UPLOAD_PRESET_KEY
+     },
+     (error, result) => {
+
+       if (result && result.event === "success") {
+         this.setState({
+           image: `https://res.cloudinary.com/ddmxdfzlm/image/upload/${result.info.path}`, uploaded: true
+         });
+       }
+     }
+   ).open()
+  }
+
   clickHandler = () => {
     this.props.activeUser ? (this.setState({edit: !this.state.edit})) : (this.props.history.push('/login'))
   }
@@ -91,8 +108,8 @@ class PhotoCard extends React.Component {
       (<div>
         <form className='photoCard-form' onSubmit={this.submitHandler}>
           <h5>Location: <input type='text' name='location' value={this.state.location} onChange={this.changeHandler}/></h5>
-          <h5>Image: <input type='text' name='image' value={this.state.image} onChange={this.changeHandler}/></h5>
           <h5>Description: <input type='textarea' name='description' value={this.state.description} onChange={this.changeHandler}/></h5>
+          <h5 className='memory-form-add-button' onClick={this.openWidget}>Change Image</h5>
           <button className='photoCard-button'>Update</button>
         </form>
       </div>)

@@ -125,6 +125,7 @@ class App extends React.Component {
   }
 
   addPhotoHandler = (photo) => {
+    console.log(photo)
     fetch('http://localhost:3000/photos',{
       method: 'POST',
       headers: {

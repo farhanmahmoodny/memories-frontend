@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import PhotoCard from './photoCard'
+import PhotoCard from './photoCard';
 
 class Memory extends React.Component {
 
@@ -9,6 +9,23 @@ class Memory extends React.Component {
     image: '',
     description: '',
     add: false
+  }
+
+  openWidget = () => {
+    window.cloudinary.createUploadWidget(
+     {
+       cloudName: process.env.REACT_APP_CLOUD_NAME_KEY,
+       uploadPreset: process.env.REACT_APP_UPLOAD_PRESET_KEY
+     },
+     (error, result) => {
+
+       if (result && result.event === "success") {
+         this.setState({
+           image: `https://res.cloudinary.com/ddmxdfzlm/image/upload/${result.info.path}`, uploaded: true
+         });
+       }
+     }
+   ).open()
   }
 
   clickHandler = () => {
@@ -23,6 +40,7 @@ class Memory extends React.Component {
     e.preventDefault()
     this.props.addPhotoHandler(this.state)
     this.setState({location: '', image: '', description: '', add: !this.state.add})
+
   }
 
   render() {
@@ -34,15 +52,15 @@ class Memory extends React.Component {
       <div className='header'>
         <h1>{this.props.memoryTitle}</h1>
       </div>
-      <div style={{display: 'flex'}}>
+      <div className='photoCards'>
         {photoCards}
       </div>
         {this.state.add ?
           (<div>
             <form className='memory-form' onSubmit={this.submitHandler}>
               <h5>Location: <input type='text' name='location' value={this.state.location} onChange={this.changeHandler}/></h5>
-              <h5>Image: <input type='text' name='image' value={this.state.image} onChange={this.changeHandler}/></h5>
               <h5>Description: <input type='textarea' name='description' value={this.state.description} onChange={this.changeHandler}/></h5>
+              <h5 className='memory-form-add-button' onClick={this.openWidget}>Add Image</h5>
               <button className='memory-form-button'>Add</button>
             </form>
           </div>) : null

@@ -307,11 +307,17 @@ padding-right: 10px;
   font-size: 17px;
 }
 
-.search-button {
+.memory-form-add-button {
+  text-align: center;
   margin-left: 5px;
   width: 100px;
-  height: 25px;
+  height: 20px;
   align-self: center;
   border-radius: 10px;
   background-color: #ffddac;
+}
+
+.photoCards {
+  display: flex;
+  flex-wrap: wrap;
 }
