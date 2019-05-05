@@ -32,7 +32,8 @@ class MemoriesContainer extends React.Component{
   }
 
   searchHandler = (e) => {
-    this.setState({search: e.target.value})
+    this.setState({[e.target.name]: e.target.value})
+    this.props.searchHandler(e.target.value)
   }
 
   render() {
@@ -42,6 +43,9 @@ class MemoriesContainer extends React.Component{
         <div className='header'>
           <h1>Memories</h1>
         </div>
+        <form className='search-form'>
+          <input type='text' name='search' value={this.state.search} placeholder='Search' className='search-input' onChange={this.searchHandler}/>
+        </form>
         <div style={{display: 'flex'}}>
           {memCards}
         </div>
