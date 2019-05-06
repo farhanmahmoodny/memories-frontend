@@ -25,7 +25,7 @@ class LogIn extends React.Component {
     return (
       <div>
         <div className='header'>
-          <h1>Log-In</h1>
+          <h1 className='h1'>Log-In</h1>
         </div>
         <form className='login-form' onSubmit={this.submitHandler}>
           <input className='login-form-input' type='text' name='username' value={this.state.username} placeholder='Username' onChange={this.changeHandler}/>

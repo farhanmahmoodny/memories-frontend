@@ -160,7 +160,7 @@
   border-radius: 15px;
   color: #534746;
   margin: 20px;
-  width: 200px;
+  width: 300px;
   text-align: center;
   background-color: #fff5e8;
   -webkit-animation: fadein 3s;
@@ -355,4 +355,14 @@ padding-right: 10px;
 .photoCards {
   display: flex;
   flex-wrap: wrap;
+}
+
+.memoryCards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.h1 {
+  margin-top: 0;
+  margin-bottom: 50px;
 }

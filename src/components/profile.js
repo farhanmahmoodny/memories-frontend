@@ -33,7 +33,7 @@ class Profile extends React.Component{
     return (
       <div>
       <div className='header'>
-        <h1>Profile</h1>
+        <h1 className='h1'>Profile</h1>
       </div>
       { !this.state.edit
         ? (<div className='profile'>

@@ -50,7 +50,7 @@ class Memory extends React.Component {
     return (
       <div>
       <div className='header'>
-        <h1>{this.props.memoryTitle}</h1>
+        <h1 className='h1'>{this.props.memoryTitle}</h1>
       </div>
       <div className='photoCards'>
         {photoCards}

@@ -26,7 +26,7 @@ class SignUp extends React.Component {
     return (
       <div>
         <div className='header'>
-          <h1>Sign Up</h1>
+          <h1 className='h1'>Sign Up</h1>
         </div>
         <form className='signup-form' onSubmit={this.submitHandler}>
           <input className='signup-form-input' type='text' name='name' value={this.state.name} placeholder='Name' onChange={this.changeHandler}/>

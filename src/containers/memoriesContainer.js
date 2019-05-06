@@ -41,12 +41,12 @@ class MemoriesContainer extends React.Component{
     return (
       <div>
         <div className='header'>
-          <h1>Memories</h1>
+          <h1 className='h1'>Memories</h1>
         </div>
         <form className='search-form'>
           <input type='text' name='search' value={this.state.search} placeholder='Search' className='search-input' onChange={this.searchHandler}/>
         </form>
-        <div style={{display: 'flex'}}>
+        <div className='memoryCards'>
           {memCards}
         </div>
         {this.state.add ?
