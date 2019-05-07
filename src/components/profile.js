@@ -47,10 +47,22 @@ class Profile extends React.Component{
           </div>)
         : (<div>
             <form className='profile-form' onSubmit={this.submitHandler}>
-              <h3 className='profile-info'>Name: <input className='profile-input' type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.changeHandler}/></h3>
-              <h3 className='profile-info'>Email: <input className='profile-input' type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.changeHandler}/></h3>
-              <h3 className='profile-info'>Username: <input className='profile-input' type='text' name= 'username' placeholder='Username' value={this.state.username} onChange={this.changeHandler}/></h3>
-              <h3 className='profile-info'>Password: <input className='profile-input' type='text' name= 'password' placeholder='Password' value={this.state.password} onChange={this.changeHandler}/></h3>
+              <div className='profile-div'>
+                <h3 className='profile-info'>Name:</h3>
+                <input className='profile-input' type='text' name='name' placeholder='Name' value={this.state.name} onChange={this.changeHandler}/>
+              </div>
+              <div className='profile-div'>
+                <h3 className='profile-info'>Email:</h3>
+                <input className='profile-input' type='text' name='email' placeholder='Email' value={this.state.email} onChange={this.changeHandler}/>
+              </div>
+              <div className='profile-div'>
+                <h3 className='profile-info'>Username:</h3>
+                <input className='profile-input' type='text' name= 'username' placeholder='Username' value={this.state.username} onChange={this.changeHandler}/>
+              </div>
+              <div className='profile-div'>
+                <h3 className='profile-info'>Password:</h3>
+                <input className='profile-input' type='text' name= 'password' placeholder='Password' value={this.state.password} onChange={this.changeHandler}/>
+              </div>
               <button className='profile-form-button'>Update</button>
             </form>
           </div>)
