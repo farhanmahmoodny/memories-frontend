@@ -169,7 +169,8 @@ class App extends React.Component {
       })
     }).then(resp => resp.json())
       .then(mem => {
-        this.setState((prevState) => ({memories: [...prevState.memories, mem]}))
+        this.setState({memories: [...this.state.memories, mem]})
+        // this.setState((prevState) => ({memories: [...prevState.memories, mem]}))
       })
   }
 
