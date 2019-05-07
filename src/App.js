@@ -37,12 +37,12 @@ class App extends React.Component {
   }
 
 
-//User handlers
   memoryHandler = (memory) => {
     let images = this.state.photos.filter(photo => photo.memory_id === memory.id)
     this.setState({memory: images, activeMemory: memory, memoryTitle: memory.title})
   }
 
+  //User handlers
   userHandler = (user) => {
     let userLI = this.state.users.filter(u => u.username === user.username && u.password === user.password)
     userLI.length === 0 ?
