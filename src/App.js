@@ -233,7 +233,6 @@ class App extends React.Component {
     this.setState({search: [...filtered]})
   }
   sortHandler = (e) => {
-    console.log(e.target.value)
     if (e.target.value === 'Alphabeitcal: A-Z') {
       let alphaAZ = this.state.memories.sort((a, b) => a.title.localeCompare(b.title))
       this.setState({memories: alphaAZ})
