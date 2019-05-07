@@ -46,6 +46,13 @@ class MemoriesContainer extends React.Component{
         <form className='search-form'>
           <input type='text' name='search' value={this.state.search} placeholder='Search' className='search-input' onChange={this.searchHandler}/>
         </form>
+        <div>
+          <select className='sort-by' onChange={this.props.sortHandler}>
+            <option>Sort By</option>
+            <option>Alphabeitcal: A-Z</option>
+            <option>Alphabetical: Z-A</option>
+          </select>
+        </div>
         <div className='memoryCards'>
           {memCards}
         </div>

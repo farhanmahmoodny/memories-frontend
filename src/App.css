@@ -366,3 +366,10 @@ padding-right: 10px;
   margin-top: 0;
   margin-bottom: 50px;
 }
+
+.sort-by {
+  margin-top: 10px;
+  margin-left: 44%;
+  width: 150px;
+  height: 20px;
+}

@@ -232,6 +232,16 @@ class App extends React.Component {
     let filtered = this.state.memories.filter(mem => mem.title.toLowerCase().includes(searching.toLowerCase()))
     this.setState({search: [...filtered]})
   }
+  sortHandler = (e) => {
+    console.log(e.target.value)
+    if (e.target.value === 'Alphabeitcal: A-Z') {
+      let alphaAZ = this.state.memories.sort((a, b) => a.title.localeCompare(b.title))
+      this.setState({memories: alphaAZ})
+    } else if (e.target.value === 'Alphabetical: Z-A') {
+      let alphaZA = this.state.memories.sort((a, b) => b.title.localeCompare(a.title))
+      this.setState({memories: alphaZA})
+    }
+  }
 
   render() {
     return (
@@ -239,7 +249,7 @@ class App extends React.Component {
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>
           <Switch>
             <Route exact path='/' render={() => (<Home />) }/>
-            <Route exact path='/memories' render={() => (<MemoriesContainer memories={this.state.search.length > 0 ? this.state.search : this.state.memories} photos={this.state.photos} comments={this.state.comments} memoryHandler={this.memoryHandler} addMemoryHandler={this.addMemoryHandler} activeUser={this.state.activeUser} editMemoryHandler={this.editMemoryHandler} deleteMemoryHandler={this.deleteMemoryHandler} searchHandler={this.searchHandler}/>) }/>
+            <Route exact path='/memories' render={() => (<MemoriesContainer memories={this.state.search.length > 0 ? this.state.search : this.state.memories} photos={this.state.photos} comments={this.state.comments} memoryHandler={this.memoryHandler} addMemoryHandler={this.addMemoryHandler} activeUser={this.state.activeUser} editMemoryHandler={this.editMemoryHandler} deleteMemoryHandler={this.deleteMemoryHandler} searchHandler={this.searchHandler} sortHandler={this.sortHandler}/>) }/>
             <Route exact path='/memories/:id' render={() => (<Memory memory={this.state.memory} editPhotoHandler={this.editPhotoHandler} deletePhotoHandler={this.deletePhotoHandler} addPhotoHandler={this.addPhotoHandler} activeUser={this.state.activeUser} addCommentHandler={this.addCommentHandler} comments={this.state.comments} deleteCommentHandler={this.deleteCommentHandler} memoryTitle={this.state.memoryTitle}/> ) }/>
             <Route exact path='/login' render={() => (<LogIn userHandler={this.userHandler} activeUser={this.state.activeUser}/>) }/>
             <Route exact path='/signup' render={() => (<SignUp newUserHandler={this.newUserHandler}/>) }/>
