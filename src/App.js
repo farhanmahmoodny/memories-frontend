@@ -20,7 +20,8 @@ class App extends React.Component {
     memoryTitle: '',
     activeMemory: null,
     activeUser: null,
-    search: []
+    search: [],
+    searchTerm: ''
   }
 
   componentDidMount(){
@@ -229,6 +230,7 @@ class App extends React.Component {
 
   //Search handlers
   searchHandler = (searching) => {
+    this.setState({searchTerm: searching})
     let filtered = this.state.memories.filter(mem => mem.title.toLowerCase().includes(searching.toLowerCase()))
     this.setState({search: [...filtered]})
   }
@@ -243,6 +245,25 @@ class App extends React.Component {
   }
 
   render() {
+    // console.log(this.state.searchTerm)
+  if (this.state.searchTerm.toLowerCase() === 'elizabeth'){alert('Huh huh!')
+} else if (this.state.searchTerm.toLowerCase() === 'brianna'){alert('OMG thats fuck\'ed up!')
+} else if (this.state.searchTerm.toLowerCase() === 'dana'){alert('Danabase!')
+} else if (this.state.searchTerm.toLowerCase() === 'dolma'){alert('Did you eat!')
+} else if (this.state.searchTerm.toLowerCase() === 'matt'){alert('WarHammer!')
+} else if (this.state.searchTerm.toLowerCase() === 'nate'){alert('Kooool!')
+} else if (this.state.searchTerm.toLowerCase() === 'robert'){alert('Konami codes!')
+} else if (this.state.searchTerm.toLowerCase() === 'camille'){alert('Buzzin!')
+} else if (this.state.searchTerm.toLowerCase() === 'josh'){alert('That\'s sick!')
+} else if (this.state.searchTerm.toLowerCase() === 'eric'){alert('Fuck\'em!')
+} else if (this.state.searchTerm.toLowerCase() === 'ethan'){alert('So cool!')
+} else if (this.state.searchTerm.toLowerCase() === 'michael'){alert('Technically...!')
+} else if (this.state.searchTerm.toLowerCase() === 'david'){alert('WHAT?!')
+} else if (this.state.searchTerm.toLowerCase() === 'faizan'){alert('Come on...!')
+} else if (this.state.searchTerm.toLowerCase() === 'charlie'){alert('Dope!')
+} else if (this.state.searchTerm.toLowerCase() === 'jeff'){alert('That\'s fair!')
+} else if (this.state.searchTerm.toLowerCase() === 'alex'){alert('Ooohhh...Magic!')
+  }
     return (
       <div>
         <NavBar logout={this.logout} activeUser={this.state.activeUser}/>
