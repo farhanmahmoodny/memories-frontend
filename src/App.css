@@ -48,7 +48,7 @@
 .login-form {
   background-color: #fff5e8;
   border: 2px solid black;
-  margin-left: 37%;
+  margin: 0 auto;
   height: 250px;
   width: 500px;
   display: flex;
@@ -74,7 +74,7 @@
 .signup-form {
   background-color: #fff5e8;
   border: 2px solid black;
-  margin-left: 37%;
+  margin: 0 auto;
   height: 450px;
   width: 500px;
   display: flex;
@@ -100,7 +100,7 @@
 .profile {
   background-color: #fff5e8;
   border: 2px solid black;
-  margin-left: 37%;
+  margin: 0 auto;
   height: 400px;
   width: 500px;
   display: flex;
@@ -119,7 +119,7 @@
 .profile-form {
   background-color: #fff5e8;
   border: 2px solid black;
-  margin-left: 37%;
+  margin: 0 auto;
   height: 450px;
   width: 500px;
   display: flex;
@@ -340,7 +340,7 @@ padding-right: 10px;
 }
 
 .search-form {
-  padding-left: 40%;
+  margin-left: 40%;
 }
 
 .search-input {
@@ -377,7 +377,7 @@ padding-right: 10px;
 
 .sort-by {
   margin-top: 10px;
-  margin-left: 43%;
+  margin: 0 auto;
   width: 150px;
   height: 20px;
 }
