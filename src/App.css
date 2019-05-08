@@ -163,7 +163,7 @@
 }
 
 .memoryCard {
-  box-shadow: 3px 3px lightgrey;
+  box-shadow: 3px 3px #bababa;
   border-radius: 15px;
   color: #534746;
   margin: 20px;
@@ -204,6 +204,10 @@
 
 .memoryCard:hover {
   color: #bababa;
+}
+
+.memoryCard-info {
+  font-family: 'Permanent Marker', cursive;
 }
 
 .memoryCard-button {
@@ -249,7 +253,7 @@
 }
 
 .photoCard {
-  box-shadow: 3px 3px lightgrey;
+  box-shadow: 3px 3px #bababa;
   border-radius: 15px;
   margin: 20px;
   width: 400px;
@@ -262,6 +266,7 @@
 }
 
 .photoCard-title {
+  font-family: 'Indie Flower', cursive;
   text-align: center;
   font-size: 30px;
   padding-top: 10px;
@@ -274,8 +279,10 @@
 }
 
 .photoCard-description {
-padding-left: 10px;
-padding-right: 10px;
+  font-family: 'Indie Flower', cursive;
+  font-size: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .photoCard-button {
@@ -376,8 +383,7 @@ padding-right: 10px;
 }
 
 .sort-by {
-  margin-top: 10px;
-  margin: 0 auto;
+  margin: 10px auto;
   width: 150px;
   height: 20px;
 }

@@ -34,8 +34,8 @@ class MemoryCard extends React.Component {
       <div className='memoryCard'>
       {!this.state.edit ?
         (<div onClick={() => this.props.memoryHandler(this.props.memory)}>
-        <h1>{this.props.memory.title}</h1>
-        <h1>{this.props.memory.date}</h1>
+        <h1 className='memoryCard-info'>{this.props.memory.title}</h1>
+        <h1 className='memoryCard-info'>{this.props.memory.date}</h1>
         </div>) :
         (<div>
           <form onSubmit={this.submitHandler}>

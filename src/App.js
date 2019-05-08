@@ -247,11 +247,11 @@ class App extends React.Component {
   render() {
     // console.log(this.state.searchTerm)
   if (this.state.searchTerm.toLowerCase() === 'elizabeth'){alert('Huh huh!')
-} else if (this.state.searchTerm.toLowerCase() === 'brianna'){alert('OMG thats fuck\'ed up!')
+} else if (this.state.searchTerm.toLowerCase() === 'brianna'){alert('OMG..Thats fuck\'ed up!')
 } else if (this.state.searchTerm.toLowerCase() === 'dana'){alert('Danabase!')
 } else if (this.state.searchTerm.toLowerCase() === 'dolma'){alert('Did you eat!')
 } else if (this.state.searchTerm.toLowerCase() === 'matt'){alert('WarHammer!')
-} else if (this.state.searchTerm.toLowerCase() === 'nate'){alert('Kooool!')
+} else if (this.state.searchTerm.toLowerCase() === 'nate'){alert('OOOOOHHHHH!')
 } else if (this.state.searchTerm.toLowerCase() === 'robert'){alert('Konami codes!')
 } else if (this.state.searchTerm.toLowerCase() === 'camille'){alert('Buzzin!')
 } else if (this.state.searchTerm.toLowerCase() === 'josh'){alert('That\'s sick!')
